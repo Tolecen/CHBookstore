@@ -1,10 +1,13 @@
 PODS:
+  - BCGenieEffect (1.1)
   - InAppSettingsKit (2.0.1)
 
 DEPENDENCIES:
+  - BCGenieEffect
   - InAppSettingsKit
 
 SPEC CHECKSUMS:
+  BCGenieEffect: 78c12c90cadce5a42dfef6c470db73cb7a68fd26
   InAppSettingsKit: 5e42f626b9be9c33e3b04c0cc9523ca5eabe7ad3
 
 COCOAPODS: 0.27.1

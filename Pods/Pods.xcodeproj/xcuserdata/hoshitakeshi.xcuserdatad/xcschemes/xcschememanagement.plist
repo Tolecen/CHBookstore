@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Pods-BCGenieEffect.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-InAppSettingsKit.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -16,6 +21,22 @@
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
-	<dict/>
+	<dict>
+		<key>039D9BD1F6E44D11A5C8E562</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>6A6016CC9676490FAC489C39</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>99A42DFC8CDA409B9BAA2342</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+	</dict>
 </dict>
 </plist>

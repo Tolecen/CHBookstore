@@ -6,6 +6,12 @@
 // project.
 
 
+// BCGenieEffect
+#define COCOAPODS_POD_AVAILABLE_BCGenieEffect
+#define COCOAPODS_VERSION_MAJOR_BCGenieEffect 1
+#define COCOAPODS_VERSION_MINOR_BCGenieEffect 1
+#define COCOAPODS_VERSION_PATCH_BCGenieEffect 0
+
 // InAppSettingsKit
 #define COCOAPODS_POD_AVAILABLE_InAppSettingsKit
 #define COCOAPODS_VERSION_MAJOR_InAppSettingsKit 2
