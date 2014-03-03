@@ -57,4 +57,8 @@
 	return [self.catalogDictionary valueForKeyPath:[NSString stringWithFormat:@"%d.title",volume]];
 }
 
+- (void)dealloc {
+	_catalogDictionary = nil;
+}
+
 @end
