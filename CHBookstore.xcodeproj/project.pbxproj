@@ -27,6 +27,11 @@
 		A530581818BB345400ABAC2F /* LeavesCache.m in Sources */ = {isa = PBXBuildFile; fileRef = A530581318BB345400ABAC2F /* LeavesCache.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		A530581918BB345400ABAC2F /* LeavesView.m in Sources */ = {isa = PBXBuildFile; fileRef = A530581518BB345400ABAC2F /* LeavesView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		A530581A18BB345400ABAC2F /* LeavesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A530581718BB345400ABAC2F /* LeavesViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		A574B2C418C459D600D6BC33 /* BSCatalogVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A574B2C318C459D600D6BC33 /* BSCatalogVC.m */; };
+		A574B2C718C45B7400D6BC33 /* BSCatalogCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A574B2C618C45B7400D6BC33 /* BSCatalogCell.m */; };
+		A574B2C918C45BD400D6BC33 /* BSCatalogCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A574B2C818C45BD400D6BC33 /* BSCatalogCell.xib */; };
+		A574B2CB18C4616200D6BC33 /* book_list.json in Resources */ = {isa = PBXBuildFile; fileRef = A574B2CA18C4616200D6BC33 /* book_list.json */; };
+		A574B2CE18C461A300D6BC33 /* BSCatalogStore.m in Sources */ = {isa = PBXBuildFile; fileRef = A574B2CD18C461A300D6BC33 /* BSCatalogStore.m */; };
 		A585402818BC3174008B82A9 /* BSSettingVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A585402718BC3174008B82A9 /* BSSettingVC.m */; };
 		A585402C18BC33AD008B82A9 /* BSSettingStore.m in Sources */ = {isa = PBXBuildFile; fileRef = A585402B18BC33AD008B82A9 /* BSSettingStore.m */; };
 		A585403018BC3634008B82A9 /* BSAbstractSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = A585402F18BC3634008B82A9 /* BSAbstractSettings.m */; };
@@ -37,6 +42,7 @@
 		A585404718BC8607008B82A9 /* WIBackdropBlurEffect.m in Sources */ = {isa = PBXBuildFile; fileRef = A585404418BC8607008B82A9 /* WIBackdropBlurEffect.m */; };
 		A585404818BC8607008B82A9 /* WIBackdropView.m in Sources */ = {isa = PBXBuildFile; fileRef = A585404618BC8607008B82A9 /* WIBackdropView.m */; };
 		A585404F18BC8725008B82A9 /* UIImage+BlurEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = A585404E18BC8725008B82A9 /* UIImage+BlurEffects.m */; };
+		A585405218BCA67B008B82A9 /* UIViewController+PreferredContentSize.m in Sources */ = {isa = PBXBuildFile; fileRef = A585405118BCA67B008B82A9 /* UIViewController+PreferredContentSize.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +85,14 @@
 		A530581518BB345400ABAC2F /* LeavesView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeavesView.m; sourceTree = "<group>"; };
 		A530581618BB345400ABAC2F /* LeavesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeavesViewController.h; sourceTree = "<group>"; };
 		A530581718BB345400ABAC2F /* LeavesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeavesViewController.m; sourceTree = "<group>"; };
+		A574B2C218C459D600D6BC33 /* BSCatalogVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSCatalogVC.h; sourceTree = "<group>"; };
+		A574B2C318C459D600D6BC33 /* BSCatalogVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSCatalogVC.m; sourceTree = "<group>"; };
+		A574B2C518C45B7400D6BC33 /* BSCatalogCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSCatalogCell.h; sourceTree = "<group>"; };
+		A574B2C618C45B7400D6BC33 /* BSCatalogCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSCatalogCell.m; sourceTree = "<group>"; };
+		A574B2C818C45BD400D6BC33 /* BSCatalogCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BSCatalogCell.xib; sourceTree = "<group>"; };
+		A574B2CA18C4616200D6BC33 /* book_list.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = book_list.json; path = ../../../Downloads/201305231149275249/book_list.json; sourceTree = "<group>"; };
+		A574B2CC18C461A300D6BC33 /* BSCatalogStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSCatalogStore.h; sourceTree = "<group>"; };
+		A574B2CD18C461A300D6BC33 /* BSCatalogStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSCatalogStore.m; sourceTree = "<group>"; };
 		A585402618BC3174008B82A9 /* BSSettingVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSSettingVC.h; sourceTree = "<group>"; };
 		A585402718BC3174008B82A9 /* BSSettingVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSSettingVC.m; sourceTree = "<group>"; };
 		A585402A18BC33AD008B82A9 /* BSSettingStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSSettingStore.h; sourceTree = "<group>"; };
@@ -98,6 +112,8 @@
 		A585404618BC8607008B82A9 /* WIBackdropView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WIBackdropView.m; sourceTree = "<group>"; };
 		A585404D18BC8725008B82A9 /* UIImage+BlurEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+BlurEffects.h"; sourceTree = "<group>"; };
 		A585404E18BC8725008B82A9 /* UIImage+BlurEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+BlurEffects.m"; sourceTree = "<group>"; };
+		A585405018BCA67B008B82A9 /* UIViewController+PreferredContentSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+PreferredContentSize.h"; sourceTree = "<group>"; };
+		A585405118BCA67B008B82A9 /* UIViewController+PreferredContentSize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+PreferredContentSize.m"; sourceTree = "<group>"; };
 		F6F619088C684780BF521EEB /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -129,6 +145,7 @@
 		A53057C318BB1DB900ABAC2F = {
 			isa = PBXGroup;
 			children = (
+				A574B2CA18C4616200D6BC33 /* book_list.json */,
 				A53057D518BB1DB900ABAC2F /* CHBookstore */,
 				A53057F418BB1DB900ABAC2F /* CHBookstoreTests */,
 				A53057CE18BB1DB900ABAC2F /* Frameworks */,
@@ -221,6 +238,8 @@
 				A585402618BC3174008B82A9 /* BSSettingVC.h */,
 				A585402718BC3174008B82A9 /* BSSettingVC.m */,
 				A585403918BC6378008B82A9 /* BSSettingVC.xib */,
+				A574B2C218C459D600D6BC33 /* BSCatalogVC.h */,
+				A574B2C318C459D600D6BC33 /* BSCatalogVC.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -232,6 +251,9 @@
 				A530580818BB26F800ABAC2F /* BSCollectionViewCell.h */,
 				A530580918BB26F800ABAC2F /* BSCollectionViewCell.m */,
 				A530580B18BB270F00ABAC2F /* BSCollectionViewCell.xib */,
+				A574B2C518C45B7400D6BC33 /* BSCatalogCell.h */,
+				A574B2C618C45B7400D6BC33 /* BSCatalogCell.m */,
+				A574B2C818C45BD400D6BC33 /* BSCatalogCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -264,6 +286,8 @@
 				A585402D18BC361E008B82A9 /* BSSettingHelper */,
 				A585402A18BC33AD008B82A9 /* BSSettingStore.h */,
 				A585402B18BC33AD008B82A9 /* BSSettingStore.m */,
+				A574B2CC18C461A300D6BC33 /* BSCatalogStore.h */,
+				A574B2CD18C461A300D6BC33 /* BSCatalogStore.m */,
 			);
 			path = System;
 			sourceTree = "<group>";
@@ -313,6 +337,8 @@
 			children = (
 				A585404D18BC8725008B82A9 /* UIImage+BlurEffects.h */,
 				A585404E18BC8725008B82A9 /* UIImage+BlurEffects.m */,
+				A585405018BCA67B008B82A9 /* UIViewController+PreferredContentSize.h */,
+				A585405118BCA67B008B82A9 /* UIViewController+PreferredContentSize.m */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -398,6 +424,8 @@
 			files = (
 				A53057E818BB1DB900ABAC2F /* Images.xcassets in Resources */,
 				A530580C18BB270F00ABAC2F /* BSCollectionViewCell.xib in Resources */,
+				A574B2C918C45BD400D6BC33 /* BSCatalogCell.xib in Resources */,
+				A574B2CB18C4616200D6BC33 /* book_list.json in Resources */,
 				A585403A18BC6378008B82A9 /* BSSettingVC.xib in Resources */,
 				A53057DA18BB1DB900ABAC2F /* InfoPlist.strings in Resources */,
 				A53057E318BB1DB900ABAC2F /* Main.storyboard in Resources */,
@@ -452,15 +480,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A585405218BCA67B008B82A9 /* UIViewController+PreferredContentSize.m in Sources */,
+				A574B2C718C45B7400D6BC33 /* BSCatalogCell.m in Sources */,
 				A530581818BB345400ABAC2F /* LeavesCache.m in Sources */,
 				A585404F18BC8725008B82A9 /* UIImage+BlurEffects.m in Sources */,
 				A530580A18BB26F800ABAC2F /* BSCollectionViewCell.m in Sources */,
 				A530581918BB345400ABAC2F /* LeavesView.m in Sources */,
 				A585404818BC8607008B82A9 /* WIBackdropView.m in Sources */,
 				A585404718BC8607008B82A9 /* WIBackdropBlurEffect.m in Sources */,
+				A574B2C418C459D600D6BC33 /* BSCatalogVC.m in Sources */,
 				A530580F18BB306200ABAC2F /* BSViewController.m in Sources */,
 				A585404118BC8483008B82A9 /* BSGenieTransitionAnimation.m in Sources */,
 				A585402818BC3174008B82A9 /* BSSettingVC.m in Sources */,
+				A574B2CE18C461A300D6BC33 /* BSCatalogStore.m in Sources */,
 				A530581A18BB345400ABAC2F /* LeavesViewController.m in Sources */,
 				A585403318BC3682008B82A9 /* BSGlobalSettings.m in Sources */,
 				A585402C18BC33AD008B82A9 /* BSSettingStore.m in Sources */,
@@ -550,7 +582,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -583,7 +615,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};

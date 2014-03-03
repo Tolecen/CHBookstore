@@ -1,13 +1,18 @@
 PODS:
   - BCGenieEffect (1.1)
   - InAppSettingsKit (2.0.1)
+  - Mantle (1.4):
+    - Mantle/extobjc
+  - Mantle/extobjc (1.4)
 
 DEPENDENCIES:
   - BCGenieEffect
   - InAppSettingsKit
+  - Mantle
 
 SPEC CHECKSUMS:
   BCGenieEffect: 78c12c90cadce5a42dfef6c470db73cb7a68fd26
   InAppSettingsKit: 5e42f626b9be9c33e3b04c0cc9523ca5eabe7ad3
+  Mantle: de026e86c183c5adfd453c1d8419babb787fea97
 
 COCOAPODS: 0.27.1

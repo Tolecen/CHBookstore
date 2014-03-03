@@ -8,6 +8,7 @@
 
 #import "BSViewController.h"
 #import "BSSettingVC.h"
+#import "BSCatalogVC.h"
 #import "BSCollectionViewCell.h"
 #import "BSGenieTransitionAnimation.h"
 
@@ -77,6 +78,12 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
 	return 10;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+	UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+	BSCatalogVC *catalog = [storyBoard instantiateViewControllerWithIdentifier:@"BSCatalogVC"];
+	[self.navigationController pushViewController:catalog animated:YES];
 }
 
 - (void)didReceiveMemoryWarning
