@@ -179,8 +179,8 @@
 			isa = PBXGroup;
 			children = (
 				A530580518BB1E0700ABAC2F /* ViewController */,
+				A574B2CF18C4679100D6BC33 /* Model */,
 				A530580718BB26E100ABAC2F /* View */,
-				A530580418BB1DF300ABAC2F /* Model */,
 				A585404C18BC8717008B82A9 /* Utility */,
 				A585402918BC333B008B82A9 /* System */,
 				A530581018BB32B000ABAC2F /* Vendor */,
@@ -221,13 +221,6 @@
 				A53057F718BB1DB900ABAC2F /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		A530580418BB1DF300ABAC2F /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		A530580518BB1E0700ABAC2F /* ViewController */ = {
@@ -277,6 +270,13 @@
 				A530581718BB345400ABAC2F /* LeavesViewController.m */,
 			);
 			path = Leaves;
+			sourceTree = "<group>";
+		};
+		A574B2CF18C4679100D6BC33 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		A585402918BC333B008B82A9 /* System */ = {

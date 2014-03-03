@@ -10,9 +10,14 @@
 
 @interface BSCatalogStore : NSObject
 
-@property (nonatomic, readonly)	NSInteger catalogSectionCount;
+@property (nonatomic, copy, readonly) NSString *bookName;
 
-@property (nonatomic, readonly) NSInteger catalogItemInSection;
+@property (nonatomic, readonly)	NSInteger volumeCount;
 
-- (id)initWithCatalogJSONFile:(NSString *)catalogJSONFile;
+- (id)initWithJSONFile:(NSString *)JSONFile;
+
+- (NSArray *)catalogsInVolume:(NSInteger)volume;
+
+- (NSString *)volumeName:(NSInteger)volume;
+
 @end

@@ -10,33 +10,51 @@
 
 @interface BSCatalogStore()
 
-@property (nonatomic, readwrite) NSInteger catalogSectionCount;
+@property (nonatomic, copy, readwrite) NSString *bookName;
 
-@property (nonatomic, readwrite) NSInteger catalogItemInSection;
+@property (nonatomic, readwrite) NSInteger volumeCount;
 
-@property (nonatomic, copy)	NSString *catalogJSONFile;
+@property (nonatomic, copy)	NSString *JSONFile;
+
+@property (nonatomic, strong) NSDictionary *catalogDictionary;
 
 @end
 
 @implementation BSCatalogStore
 
-- (id)initWithCatalogJSONFile:(NSString *)catalogJSONFile {
+- (id)initWithJSONFile:(NSString *)JSONFile {
 	if (self = [super init]) {
-		self.catalogJSONFile = catalogJSONFile;
+		self.JSONFile = JSONFile;
 	}
 	return self;
 }
 
-- (void)setCatalogJSONFile:(NSString *)catalogJSONFile {
-	if (_catalogJSONFile == catalogJSONFile) {
+- (void)setJSONFile:(NSString *)JSONFile {
+	if (_JSONFile == JSONFile) {
 		return;
 	}
-	_catalogJSONFile = catalogJSONFile;
-	[self parserCatalogJSONFile:catalogJSONFile];
+	_JSONFile = JSONFile;
+	[self parserJSONFile:JSONFile];
 }
 
-- (void)parserCatalogJSONFile:(NSString *)catalogJSONFile {
+- (void)parserJSONFile:(NSString *)JSONFile {
+	self.catalogDictionary = [NSJSONSerialization JSONObjectWithData:[NSData dataWithContentsOfFile:JSONFile] options:NSJSONReadingAllowFragments error:nil];
+}
 
+- (NSString *)bookName {
+	return self.catalogDictionary[@"bookname"];
+}
+
+- (NSInteger)volumeCount {
+	return [self.catalogDictionary[@"total_volumes"] integerValue];
+}
+
+- (NSArray *)catalogsInVolume:(NSInteger)volume {
+	return [self.catalogDictionary valueForKeyPath:[NSString stringWithFormat:@"%d.catalog",volume]];
+}
+
+- (NSString *)volumeName:(NSInteger)volume {
+	return [self.catalogDictionary valueForKeyPath:[NSString stringWithFormat:@"%d.title",volume]];
 }
 
 @end
