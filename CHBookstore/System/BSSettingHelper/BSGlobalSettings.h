@@ -28,6 +28,12 @@ typedef NS_ENUM(NSInteger, BSShelfThemeMode) {
 	BSShelfThemeModeBizarre = 4
 };
 
+extern CGFloat linespacingHeightFromLinespacingmode(BSLinespacingMode mode);
+
+extern UIColor *colorFromReadingMode(BSReadingMode mode);
+
+extern void backgroundColorFromReadingMode(BSReadingMode mode,CGContextRef ctx);
+
 @interface BSGlobalSettings : BSAbstractSettings
 
 @property (nonatomic) float fontSize;
