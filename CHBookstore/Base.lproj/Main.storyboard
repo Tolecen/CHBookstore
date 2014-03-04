@@ -32,7 +32,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="LbX-ow-sKu">
+                            <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="LbX-ow-sKu">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="1" green="0.6201611024" blue="0.75914920549999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -60,6 +60,12 @@
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="LbX-ow-sKu" firstAttribute="leading" secondItem="FeH-Ga-bAd" secondAttribute="leading" id="1Lh-Fa-qkO"/>
+                            <constraint firstAttribute="trailing" secondItem="LbX-ow-sKu" secondAttribute="trailing" id="Hk0-vM-W8T"/>
+                            <constraint firstItem="LbX-ow-sKu" firstAttribute="top" secondItem="FeH-Ga-bAd" secondAttribute="top" id="STw-pd-9KO"/>
+                            <constraint firstItem="0WH-46-Aon" firstAttribute="top" secondItem="LbX-ow-sKu" secondAttribute="bottom" id="fPx-3R-ovh"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="云心书城" id="v3l-Co-0hn"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
@@ -84,7 +90,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="M2d-lY-zsV">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="M2d-lY-zsV">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -95,6 +101,12 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="M2d-lY-zsV" secondAttribute="trailing" id="4AB-AK-EnC"/>
+                            <constraint firstItem="M2d-lY-zsV" firstAttribute="leading" secondItem="R7J-6L-OYF" secondAttribute="leading" id="Olg-tc-Exm"/>
+                            <constraint firstItem="n8o-8r-ufQ" firstAttribute="top" secondItem="M2d-lY-zsV" secondAttribute="bottom" id="jTx-cf-hhT"/>
+                            <constraint firstItem="M2d-lY-zsV" firstAttribute="top" secondItem="R7J-6L-OYF" secondAttribute="top" id="tzj-CP-Bqj"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="章节目录" id="8nm-aY-6f9"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
