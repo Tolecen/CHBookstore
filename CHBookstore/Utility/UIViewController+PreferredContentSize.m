@@ -15,12 +15,13 @@
 	static dispatch_once_t onceToken;
 	dispatch_once(&onceToken, ^{
 		@autoreleasepool {
-			if (![self instanceMethodForSelector:@selector(preferredContentSize)]) {
+			if (![self instancesRespondToSelector:@selector(preferredContentSize)]) {
 				class_addMethod(self,
 								@selector(preferredContentSize),
-								class_getMethodImplementation(self, @selector(bs_preferredContentSize)), method_getTypeEncoding(class_getInstanceMethod(self, @selector(bs_preferredContentSize))));
+								class_getMethodImplementation(self, @selector(bs_preferredContentSize)),
+								method_getTypeEncoding(class_getInstanceMethod(self, @selector(bs_preferredContentSize))));
 			}
-			if (![self instanceMethodForSelector:@selector(setPreferredContentSize:)]) {
+			if (![self instancesRespondToSelector:@selector(setPreferredContentSize:)]) {
 				class_addMethod(self,
 								@selector(setPreferredContentSize:),
 								class_getMethodImplementation(self, @selector(bs_setPreferredContentSize:)),
