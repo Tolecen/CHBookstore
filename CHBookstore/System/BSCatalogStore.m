@@ -50,11 +50,11 @@
 }
 
 - (NSArray *)catalogsInVolume:(NSInteger)volume {
-	return [self.catalogDictionary valueForKeyPath:[NSString stringWithFormat:@"%d.catalog",volume]];
+	return [self.catalogDictionary valueForKeyPath:[NSString stringWithFormat:@"%d.catalog",volume+1]];
 }
 
 - (NSString *)volumeName:(NSInteger)volume {
-	return [self.catalogDictionary valueForKeyPath:[NSString stringWithFormat:@"%d.title",volume]];
+	return [self.catalogDictionary valueForKeyPath:[NSString stringWithFormat:@"%d.title",volume+1]];
 }
 
 - (void)dealloc {

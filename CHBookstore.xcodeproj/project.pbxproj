@@ -30,7 +30,6 @@
 		A574B2C418C459D600D6BC33 /* BSCatalogVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A574B2C318C459D600D6BC33 /* BSCatalogVC.m */; };
 		A574B2C718C45B7400D6BC33 /* BSCatalogCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A574B2C618C45B7400D6BC33 /* BSCatalogCell.m */; };
 		A574B2C918C45BD400D6BC33 /* BSCatalogCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A574B2C818C45BD400D6BC33 /* BSCatalogCell.xib */; };
-		A574B2CB18C4616200D6BC33 /* book_list.json in Resources */ = {isa = PBXBuildFile; fileRef = A574B2CA18C4616200D6BC33 /* book_list.json */; };
 		A574B2CE18C461A300D6BC33 /* BSCatalogStore.m in Sources */ = {isa = PBXBuildFile; fileRef = A574B2CD18C461A300D6BC33 /* BSCatalogStore.m */; };
 		A585402818BC3174008B82A9 /* BSSettingVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A585402718BC3174008B82A9 /* BSSettingVC.m */; };
 		A585402C18BC33AD008B82A9 /* BSSettingStore.m in Sources */ = {isa = PBXBuildFile; fileRef = A585402B18BC33AD008B82A9 /* BSSettingStore.m */; };
@@ -43,6 +42,7 @@
 		A585404818BC8607008B82A9 /* WIBackdropView.m in Sources */ = {isa = PBXBuildFile; fileRef = A585404618BC8607008B82A9 /* WIBackdropView.m */; };
 		A585404F18BC8725008B82A9 /* UIImage+BlurEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = A585404E18BC8725008B82A9 /* UIImage+BlurEffects.m */; };
 		A585405218BCA67B008B82A9 /* UIViewController+PreferredContentSize.m in Sources */ = {isa = PBXBuildFile; fileRef = A585405118BCA67B008B82A9 /* UIViewController+PreferredContentSize.m */; };
+		A59433C518C581F6008E6516 /* book_list.json in Resources */ = {isa = PBXBuildFile; fileRef = A59433C418C581F6008E6516 /* book_list.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,7 +90,6 @@
 		A574B2C518C45B7400D6BC33 /* BSCatalogCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSCatalogCell.h; sourceTree = "<group>"; };
 		A574B2C618C45B7400D6BC33 /* BSCatalogCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSCatalogCell.m; sourceTree = "<group>"; };
 		A574B2C818C45BD400D6BC33 /* BSCatalogCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BSCatalogCell.xib; sourceTree = "<group>"; };
-		A574B2CA18C4616200D6BC33 /* book_list.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = book_list.json; path = ../../../Downloads/201305231149275249/book_list.json; sourceTree = "<group>"; };
 		A574B2CC18C461A300D6BC33 /* BSCatalogStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSCatalogStore.h; sourceTree = "<group>"; };
 		A574B2CD18C461A300D6BC33 /* BSCatalogStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSCatalogStore.m; sourceTree = "<group>"; };
 		A585402618BC3174008B82A9 /* BSSettingVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSSettingVC.h; sourceTree = "<group>"; };
@@ -114,6 +113,7 @@
 		A585404E18BC8725008B82A9 /* UIImage+BlurEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+BlurEffects.m"; sourceTree = "<group>"; };
 		A585405018BCA67B008B82A9 /* UIViewController+PreferredContentSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+PreferredContentSize.h"; sourceTree = "<group>"; };
 		A585405118BCA67B008B82A9 /* UIViewController+PreferredContentSize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+PreferredContentSize.m"; sourceTree = "<group>"; };
+		A59433C418C581F6008E6516 /* book_list.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = book_list.json; path = ../../../Downloads/201305231149275249/book_list.json; sourceTree = "<group>"; };
 		F6F619088C684780BF521EEB /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -145,7 +145,7 @@
 		A53057C318BB1DB900ABAC2F = {
 			isa = PBXGroup;
 			children = (
-				A574B2CA18C4616200D6BC33 /* book_list.json */,
+				A59433C418C581F6008E6516 /* book_list.json */,
 				A53057D518BB1DB900ABAC2F /* CHBookstore */,
 				A53057F418BB1DB900ABAC2F /* CHBookstoreTests */,
 				A53057CE18BB1DB900ABAC2F /* Frameworks */,
@@ -425,7 +425,7 @@
 				A53057E818BB1DB900ABAC2F /* Images.xcassets in Resources */,
 				A530580C18BB270F00ABAC2F /* BSCollectionViewCell.xib in Resources */,
 				A574B2C918C45BD400D6BC33 /* BSCatalogCell.xib in Resources */,
-				A574B2CB18C4616200D6BC33 /* book_list.json in Resources */,
+				A59433C518C581F6008E6516 /* book_list.json in Resources */,
 				A585403A18BC6378008B82A9 /* BSSettingVC.xib in Resources */,
 				A53057DA18BB1DB900ABAC2F /* InfoPlist.strings in Resources */,
 				A53057E318BB1DB900ABAC2F /* Main.storyboard in Resources */,
