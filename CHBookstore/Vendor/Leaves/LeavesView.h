@@ -55,6 +55,8 @@
 // property to 0 and jumps to the first page.
 - (void)reloadData;
 
+- (void)reloadData:(NSUInteger)pageIndex;
+
 @end
 
 @protocol LeavesViewDataSource <NSObject>

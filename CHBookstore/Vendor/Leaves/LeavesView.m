@@ -129,6 +129,13 @@ CGFloat distance(CGPoint a, CGPoint b);
 	self.currentPageIndex = 0;
 }
 
+- (void)reloadData:(NSUInteger)pageIndex {
+	[self.pageCache flush];
+	self.numberOfPages = [self.pageCache.dataSource numberOfPagesInLeavesView:self];
+    self.currentPageIndex = pageIndex;
+    [self setNeedsDisplay];
+}
+
 - (void)getImages {
 	if (self.currentPageIndex < self.numberOfPages) {
 		if (self.currentPageIndex > 0 && self.backgroundRendering)

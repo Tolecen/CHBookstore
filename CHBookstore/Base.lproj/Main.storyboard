@@ -23,7 +23,7 @@
         <!--View Controller - 云心书城-->
         <scene sceneID="7d2-kj-bSi">
             <objects>
-                <viewController title="云心书城" id="rXW-aH-XSu" customClass="BSViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BSViewController" title="云心书城" useStoryboardIdentifierAsRestorationIdentifier="YES" id="rXW-aH-XSu" customClass="BSViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="HYw-ed-ich"/>
                         <viewControllerLayoutGuide type="bottom" id="0WH-46-Aon"/>

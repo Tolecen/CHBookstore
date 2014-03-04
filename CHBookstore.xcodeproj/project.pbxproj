@@ -43,6 +43,9 @@
 		A585404F18BC8725008B82A9 /* UIImage+BlurEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = A585404E18BC8725008B82A9 /* UIImage+BlurEffects.m */; };
 		A585405218BCA67B008B82A9 /* UIViewController+PreferredContentSize.m in Sources */ = {isa = PBXBuildFile; fileRef = A585405118BCA67B008B82A9 /* UIViewController+PreferredContentSize.m */; };
 		A59433C518C581F6008E6516 /* book_list.json in Resources */ = {isa = PBXBuildFile; fileRef = A59433C418C581F6008E6516 /* book_list.json */; };
+		A59433C818C5B00C008E6516 /* BSDrawManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A59433C718C5B00C008E6516 /* BSDrawManager.m */; };
+		A59433CE18C5C61B008E6516 /* BSReadingVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A59433CD18C5C61B008E6516 /* BSReadingVC.m */; };
+		A59433D018C5CBD5008E6516 /* 1_1.txt in Resources */ = {isa = PBXBuildFile; fileRef = A59433CF18C5CBD5008E6516 /* 1_1.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -114,6 +117,11 @@
 		A585405018BCA67B008B82A9 /* UIViewController+PreferredContentSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+PreferredContentSize.h"; sourceTree = "<group>"; };
 		A585405118BCA67B008B82A9 /* UIViewController+PreferredContentSize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+PreferredContentSize.m"; sourceTree = "<group>"; };
 		A59433C418C581F6008E6516 /* book_list.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = book_list.json; path = ../../../Downloads/201305231149275249/book_list.json; sourceTree = "<group>"; };
+		A59433C618C5B00C008E6516 /* BSDrawManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSDrawManager.h; sourceTree = "<group>"; };
+		A59433C718C5B00C008E6516 /* BSDrawManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSDrawManager.m; sourceTree = "<group>"; };
+		A59433CC18C5C61B008E6516 /* BSReadingVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSReadingVC.h; sourceTree = "<group>"; };
+		A59433CD18C5C61B008E6516 /* BSReadingVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSReadingVC.m; sourceTree = "<group>"; };
+		A59433CF18C5CBD5008E6516 /* 1_1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = 1_1.txt; path = ../../../Downloads/201305231149275249/1_1.txt; sourceTree = "<group>"; };
 		F6F619088C684780BF521EEB /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -146,6 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				A59433C418C581F6008E6516 /* book_list.json */,
+				A59433CF18C5CBD5008E6516 /* 1_1.txt */,
 				A53057D518BB1DB900ABAC2F /* CHBookstore */,
 				A53057F418BB1DB900ABAC2F /* CHBookstoreTests */,
 				A53057CE18BB1DB900ABAC2F /* Frameworks */,
@@ -233,6 +242,8 @@
 				A585403918BC6378008B82A9 /* BSSettingVC.xib */,
 				A574B2C218C459D600D6BC33 /* BSCatalogVC.h */,
 				A574B2C318C459D600D6BC33 /* BSCatalogVC.m */,
+				A59433CC18C5C61B008E6516 /* BSReadingVC.h */,
+				A59433CD18C5C61B008E6516 /* BSReadingVC.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -288,6 +299,8 @@
 				A585402B18BC33AD008B82A9 /* BSSettingStore.m */,
 				A574B2CC18C461A300D6BC33 /* BSCatalogStore.h */,
 				A574B2CD18C461A300D6BC33 /* BSCatalogStore.m */,
+				A59433C618C5B00C008E6516 /* BSDrawManager.h */,
+				A59433C718C5B00C008E6516 /* BSDrawManager.m */,
 			);
 			path = System;
 			sourceTree = "<group>";
@@ -428,6 +441,7 @@
 				A59433C518C581F6008E6516 /* book_list.json in Resources */,
 				A585403A18BC6378008B82A9 /* BSSettingVC.xib in Resources */,
 				A53057DA18BB1DB900ABAC2F /* InfoPlist.strings in Resources */,
+				A59433D018C5CBD5008E6516 /* 1_1.txt in Resources */,
 				A53057E318BB1DB900ABAC2F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -488,6 +502,8 @@
 				A530581918BB345400ABAC2F /* LeavesView.m in Sources */,
 				A585404818BC8607008B82A9 /* WIBackdropView.m in Sources */,
 				A585404718BC8607008B82A9 /* WIBackdropBlurEffect.m in Sources */,
+				A59433CE18C5C61B008E6516 /* BSReadingVC.m in Sources */,
+				A59433C818C5B00C008E6516 /* BSDrawManager.m in Sources */,
 				A574B2C418C459D600D6BC33 /* BSCatalogVC.m in Sources */,
 				A530580F18BB306200ABAC2F /* BSViewController.m in Sources */,
 				A585404118BC8483008B82A9 /* BSGenieTransitionAnimation.m in Sources */,
