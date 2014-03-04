@@ -7,6 +7,7 @@
 //
 
 #import "BSCatalogVC.h"
+#import "BSReadingVC.h"
 #import "BSCatalogCell.h"
 #import "BSCatalogStore.h"
 
@@ -57,7 +58,10 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	NSLog(@"%d",indexPath.row);
+	BSCatalogCell *cell = (BSCatalogCell *)[tableView cellForRowAtIndexPath:indexPath];
+	BSReadingVC *readingVC = [[BSReadingVC alloc] init];
+	readingVC.volumeName = cell.textLabel.text;
+	[self.navigationController pushViewController:readingVC animated:YES];
 }
 
 - (void)didReceiveMemoryWarning
