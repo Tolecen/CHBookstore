@@ -1,112 +1,118 @@
 //
 //  LeavesCache.m
-//  Leaves
+//  Reader
 //
 //  Created by Tom Brow on 5/12/10.
-//  Copyright 2010 Tom Brow. All rights reserved.
+//  Copyright 2010 __MyCompanyName__. All rights reserved.
 //
 
 #import "LeavesCache.h"
 #import "LeavesView.h"
 
-@interface LeavesCache ()
-
-@property (readonly) NSMutableDictionary *pageCache;
-
-@end
-
 @implementation LeavesCache
 
-- (id)initWithPageSize:(CGSize)aPageSize
+@synthesize dataSource, pageSize;
+
+- (id) initWithPageSize:(CGSize)aPageSize
 {
 	if (self = [super init]) {
-		_pageSize = aPageSize;
-		_pageCache = [[NSMutableDictionary alloc] init];
+		pageSize = aPageSize;
+		pageCache = [[NSMutableDictionary alloc] init];
 	}
 	return self;
 }
 
-- (void)dealloc
+- (void) dealloc
 {
-	[_pageCache release];
+	[pageCache release];
 	[super dealloc];
 }
 
-- (CGImageRef)imageForPageIndex:(NSUInteger)pageIndex {
-    if (CGSizeEqualToSize(self.pageSize, CGSizeZero))
-        return NULL;
+- (CGImageRef) imageForPageIndex:(NSUInteger)pageIndex 
+{
+    CGFloat scale = [[UIScreen mainScreen] scale];
     
 	CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
 	CGContextRef context = CGBitmapContextCreate(NULL, 
-												 self.pageSize.width, 
-												 self.pageSize.height, 
+												 pageSize.width * scale, 
+												 pageSize.height * scale, 
 												 8,						/* bits per component*/
-												 self.pageSize.width * 4, 	/* bytes per row */
+												 pageSize.width * scale * 4, 	/* bytes per row */
 												 colorSpace, 
 												 kCGImageAlphaPremultipliedLast | kCGBitmapByteOrder32Big);
+    
 	CGColorSpaceRelease(colorSpace);
-	CGContextClipToRect(context, CGRectMake(0, 0, self.pageSize.width, self.pageSize.height));
-	
-	[self.dataSource renderPageAtIndex:pageIndex inContext:context];
+    CGContextSetShouldAntialias(context, YES);
+    CGContextSetInterpolationQuality(context, kCGInterpolationHigh);
+    CGContextSetRenderingIntent(context, kCGRenderingIntentPerceptual);
+    CGContextSetAllowsFontSubpixelQuantization(context, YES);
+    
+    CGContextTranslateCTM(context, 0.0f, pageSize.height * scale);
+    CGContextScaleCTM(context, 1.0f, -1.0f);
+    
+	[dataSource renderPageAtIndex:pageIndex inContext:context];
 	
 	CGImageRef image = CGBitmapContextCreateImage(context);
 	CGContextRelease(context);
 	
-	[UIImage imageWithCGImage:image];
+    [UIImage imageWithCGImage:image scale:scale orientation:UIImageOrientationUp];
 	CGImageRelease(image);
 	
 	return image;
 }
 
-- (CGImageRef)cachedImageForPageIndex:(NSUInteger)pageIndex {
+- (CGImageRef) cachedImageForPageIndex:(NSUInteger)pageIndex {
 	NSNumber *pageIndexNumber = [NSNumber numberWithInt:pageIndex];
 	UIImage *pageImage;
-	@synchronized (self.pageCache) {
-		pageImage = [self.pageCache objectForKey:pageIndexNumber];
+	@synchronized (pageCache) {
+		pageImage = [pageCache objectForKey:pageIndexNumber];
 	}
 	if (!pageImage) {
 		CGImageRef pageCGImage = [self imageForPageIndex:pageIndex];
-        if (pageCGImage) {
-            pageImage = [UIImage imageWithCGImage:pageCGImage];
-            @synchronized (self.pageCache) {
-                [self.pageCache setObject:pageImage forKey:pageIndexNumber];
-            }
-        }
+		pageImage = [UIImage imageWithCGImage:pageCGImage];
+		@synchronized (pageCache) {
+			[pageCache setObject:pageImage forKey:pageIndexNumber];
+		}
 	}
 	return pageImage.CGImage;
 }
 
-- (void)precacheImageForPageIndexNumber:(NSNumber *)pageIndexNumber {
+- (void) precacheImageForPageIndexNumber:(NSNumber *)pageIndexNumber {
 	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 	[self cachedImageForPageIndex:[pageIndexNumber intValue]];
 	[pool release];
 }
 
-- (void)precacheImageForPageIndex:(NSUInteger)pageIndex {
+- (void) precacheImageForPageIndex:(NSUInteger)pageIndex {
 	[self performSelectorInBackground:@selector(precacheImageForPageIndexNumber:)
 						   withObject:[NSNumber numberWithInt:pageIndex]];
 }
 
-- (void)minimizeToPageIndex:(NSUInteger)pageIndex {
+- (void) minimizeToPageIndex:(NSUInteger)pageIndex {
 	/* Uncache all pages except previous, current, and next. */
-	@synchronized (self.pageCache) {
-		for (NSNumber *key in [self.pageCache allKeys])
+	@synchronized (pageCache) {
+		for (NSNumber *key in [pageCache allKeys])
 			if (ABS([key intValue] - (int)pageIndex) > 2)
-				[self.pageCache removeObjectForKey:key];
+				[pageCache removeObjectForKey:key];
 	}
 }
 
-- (void)flush {
-	@synchronized (self.pageCache) {
-		[self.pageCache removeAllObjects];
+- (void) flush {
+	@synchronized (pageCache) {
+		[pageCache removeAllObjects];
 	}
 }
 
 #pragma mark accessors
 
-- (void)setPageSize:(CGSize)value {
-	_pageSize = value;
+- (void) setPageSize:(CGSize)value {
+	pageSize = value;
 	[self flush];
+}
+
+- (CGSize)pageSize
+{
+    return pageSize;
 }
 
 @end

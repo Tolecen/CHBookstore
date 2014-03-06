@@ -1,18 +1,22 @@
 //
 //  LeavesCache.h
-//  Leaves
+//  Reader
 //
 //  Created by Tom Brow on 5/12/10.
-//  Copyright 2010 Tom Brow. All rights reserved.
+//  Copyright 2010 __MyCompanyName__. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 
 @protocol LeavesViewDataSource;
 
-@interface LeavesCache : NSObject
+@interface LeavesCache : NSObject {
+	NSMutableDictionary *pageCache;
+	id<LeavesViewDataSource> dataSource;
+//	CGSize pageSize;
+}
 
-@property (nonatomic, assign) CGSize pageSize;
+@property (assign) CGSize pageSize;
 @property (assign) id<LeavesViewDataSource> dataSource;
 
 - (id)initWithPageSize:(CGSize)aPageSize;

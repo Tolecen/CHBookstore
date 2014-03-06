@@ -6,7 +6,7 @@
 //  Copyright (c) 2014年 __MyCompanyName__. All rights reserved.
 //
 
-#import "IASKSettingsStore.h"
+//#import "IASKSettingsStore.h"
 #import "BSGlobalSettings.h"
 
 extern NSString *const BSSettingStoreGlobalSettingKeyPrefix;

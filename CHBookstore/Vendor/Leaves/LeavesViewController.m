@@ -7,47 +7,84 @@
 //
 
 #import "LeavesViewController.h"
-#import "LeavesView.h"
-
-@interface LeavesViewController () <LeavesViewDataSource, LeavesViewDelegate>
-
-@end
 
 @implementation LeavesViewController
 
-- (id)initWithNibName:(NSString *)nibName bundle:(NSBundle *)nibBundle {
-    if (self = [super initWithNibName:nibName bundle:nibBundle]) {
-        _leavesView = [[LeavesView alloc] initWithFrame:CGRectZero];
-        _leavesView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-        _leavesView.dataSource = self;
-        _leavesView.delegate = self;
-    }
-    return self;
+- (void)initialize
+{
+    CGFloat scale = [[UIScreen mainScreen] scale];
+//    leavesView = [[LeavesView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, viewSize.width, viewSize.height)];
+	leavesView = [[LeavesView alloc] initWithFrame:CGRectZero];
+    leavesView.layer.contentsScale = scale;
+}
+
+- (id)initWithNibName:(NSString *)nibName bundle:(NSBundle *)nibBundle
+{
+   if (self = [super initWithNibName:nibName bundle:nibBundle]) 
+   {
+//	   if (NSFoundationVersionNumber >= NSFoundationVersionNumber_iOS_6_0) {
+//		   viewSize = CGSizeMake(320, 568);
+//	   } else {
+//		   viewSize = CGSizeMake(320, 480);
+//	   }
+      [self initialize];
+   }
+   return self;
+}
+
+- (id)init 
+{
+   return [self initWithNibName:nil bundle:nil];
+}
+
+- (void) awakeFromNib {
+	[super awakeFromNib];
+	[self initialize];
 }
 
 - (void)dealloc {
-	[_leavesView release];
+    
+	[leavesView release];
     [super dealloc];
+    
 }
 
-#pragma mark LeavesViewDataSource
+#pragma mark LeavesViewDataSource methods
 
-- (NSUInteger)numberOfPagesInLeavesView:(LeavesView*)leavesView {
+- (NSUInteger) numberOfPagesInLeavesView:(LeavesView*)leavesView {
 	return 0;
 }
 
-- (void)renderPageAtIndex:(NSUInteger)index inContext:(CGContextRef)ctx {
+- (void) renderPageAtIndex:(NSUInteger)index inContext:(CGContextRef)ctx 
+{
 	
 }
 
-#pragma mark UIViewController
+#pragma mark  UIViewController methods
 
-- (void)viewDidLoad {
+- (void)loadView 
+{
+    CGFloat scale = [[UIScreen mainScreen] scale];
+//	UIView *aView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, viewSize.width, viewSize.height)];
+//    aView.backgroundColor = [UIColor clearColor];
+//    aView.layer.contentsScale = scale;
+//    self.view = aView;
+//    [aView release];
+//    
+//	[self.view addSubview:leavesView];
+	
+	self.view = [[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds];
+	self.view.backgroundColor = [UIColor whiteColor];
+	self.view.layer.contentsScale = scale;
+	[self.view addSubview:leavesView];
+}
+
+- (void) viewDidLoad {
 	[super viewDidLoad];
-    
-    _leavesView.frame = self.view.bounds;
-	[self.view addSubview:_leavesView];
-	[_leavesView reloadData];
+	leavesView.frame = self.view.bounds;
+    [leavesView layoutSubviews];
+	leavesView.dataSource = self;
+	leavesView.delegate = self;
 }
 
 @end

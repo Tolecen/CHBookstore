@@ -30,19 +30,25 @@
 
 @property (nonatomic) BSReadingMode readingMode;
 
-@property (nonatomic) CGRect drawFrame;
+@property (nonatomic) CGFloat volumeTopConstrains;
 
-@property (nonatomic) CGSize viewSize;
+@property (nonatomic) CGFloat pageBottomConstrains;
 
-@property (nonatomic) CGFloat suggestedHeight;
+@property (nonatomic) CGFloat volumeHeightConstrains;
 
-@property (nonatomic) CGFloat topEmptyHeight;
+@property (nonatomic) CGFloat pageHeightConstrains;
 
-@property (nonatomic) CGFloat volumeContentHeight;
+@property (nonatomic) CGFloat txtToPageBottomConstrains;
+
+@property (nonatomic) CGFloat txtToVolumeTopConstrains;
+
+@property (nonatomic) CGSize renderSize;
 
 @property (nonatomic) CGSize contentSize;
 
-@property (nonatomic) CGFloat initPageY;
+@property (nonatomic) CGRect drawFrame;
+
+@property (nonatomic) CGFloat suggestedHeight;
 
 @end
 
@@ -59,16 +65,23 @@
 }
 
 - (void)configDefaults {
-//	CGFloat scale = [UIScreen mainScreen].scale;
-	CGFloat scale = 1;
-	_viewSize = CGSizeMake(320.0f, 548.0f);
-	CGFloat edgeEmptyLength = 18.0f;
-	_contentSize = CGSizeMake(_viewSize.width - 2.0 * edgeEmptyLength, 452.5f);
-	_drawFrame = CGRectMake(edgeEmptyLength * scale, 60.0f * scale, _contentSize.width * scale, _contentSize.height * scale);
+	CGFloat scale = [UIScreen mainScreen].scale;
+	CGFloat constrainToEdge = 18.0f;
+	_renderSize = [UIScreen mainScreen].bounds.size;
+	if (_renderSize.height == 480) {
+		_renderSize.height = 460;
+	}
+	CGFloat offSetX = NSFoundationVersionNumber >= NSFoundationVersionNumber_iOS_6_1 ? 20 : 0;
+	_volumeTopConstrains = 10.f + offSetX;//constains top binding volume;
+	_pageBottomConstrains = 40.f;
+	_volumeHeightConstrains = 14.f;//constains height binding volume;
+	_pageHeightConstrains = _volumeHeightConstrains;
+	_txtToVolumeTopConstrains = 6.f;
+	_txtToPageBottomConstrains = _txtToVolumeTopConstrains;
+	_contentSize = CGSizeMake(_renderSize.width - 2 * constrainToEdge, _renderSize.height - _volumeTopConstrains - _pageBottomConstrains);
+	CGFloat drawHeight = _contentSize.height - _pageHeightConstrains * 2 - _txtToPageBottomConstrains *2;
+	_drawFrame = CGRectMake(constrainToEdge * scale, (_volumeTopConstrains + _volumeHeightConstrains + _txtToVolumeTopConstrains) * scale, _contentSize.width * scale, drawHeight * scale);
 	_suggestedHeight = 20.0f;
-	_topEmptyHeight = 6.0f;
-	_volumeContentHeight = 18.0f;
-	_initPageY = 46.0f;
 }
 
 - (void)acquireGlobalSettingFromSettingStore {
@@ -83,14 +96,14 @@
 	if (_txtElement == txtElement) {
 		return;
 	}
-	_txtElement = txtElement;
+	_txtElement = [txtElement copy];
 }
 
 - (void)setVolumeName:(NSString *)volumeName {
 	if (_volumeName == volumeName) {
 		return;
 	}
-	_volumeName = volumeName;
+	_volumeName = [volumeName copy];
 }
 
 - (void)createVolumeAttribute:(CFStringRef)string {
@@ -98,8 +111,7 @@
 	if (_volumeStringRef != NULL) {
 		CFRelease(_volumeStringRef);
 	}
-//	CGFloat scale = [UIScreen mainScreen].scale;
-	CGFloat scale = 1;
+	CGFloat scale = [UIScreen mainScreen].scale;
 	_volumeStringRef = CFAttributedStringCreateMutable(kCFAllocatorDefault, 0);
 	//将需要被显示的字符串设置到属性字符串中
 	CFAttributedStringReplaceString(_volumeStringRef, CFRangeMake(0, 0), string);
@@ -107,7 +119,7 @@
 	CGColorRef fontColor = [UIColor brownColor].CGColor;
 	CFAttributedStringSetAttribute(_volumeStringRef, CFRangeMake(0, CFStringGetLength(string)), kCTForegroundColorAttributeName, fontColor);
 	
-	CTFontRef font = CTFontCreateWithName(CFSTR(BOOK_FONT_NAME), self.fontSize * scale, &CGAffineTransformIdentity);
+	CTFontRef font = CTFontCreateWithName(CFSTR(BOOK_FONT_NAME), 14.f * scale, &CGAffineTransformIdentity);
 	CFAttributedStringSetAttribute(_volumeStringRef, CFRangeMake(0, CFStringGetLength(string)), kCTFontAttributeName, font);
 	CFRelease(font);
 }
@@ -117,8 +129,7 @@
 	if (_contentStringRef != NULL) {
 		CFRelease(_contentStringRef);
 	}
-//	CGFloat scale = [UIScreen mainScreen].scale;
-	CGFloat scale = 1;
+	CGFloat scale = [UIScreen mainScreen].scale;
 	
 	const CGFloat scaleFactor = render?scale:1.f;
 	_contentStringRef = CFAttributedStringCreateMutable(kCFAllocatorDefault, 0);
@@ -134,7 +145,7 @@
 	
 	CTParagraphStyleRef paragraph = CTParagraphStyleCreate((const CTParagraphStyleSetting[]){
 		{.spec = kCTParagraphStyleSpecifierLineHeightMultiple, .valueSize = sizeof(CGFloat), .value = (CGFloat[]){self.linespacingHeight} },
-        {.spec = kCTParagraphStyleSpecifierFirstLineHeadIndent, .valueSize = sizeof(CGFloat), .value = (CGFloat[]){self.fontSize} }
+        {.spec = kCTParagraphStyleSpecifierFirstLineHeadIndent, .valueSize = sizeof(CGFloat), .value = (CGFloat[]){self.fontSize * 0.0} }
 	}, 2);
 	
 	CFAttributedStringSetAttribute(_contentStringRef, CFRangeMake(0, CFStringGetLength(string)), kCTParagraphStyleAttributeName, paragraph);
@@ -142,11 +153,11 @@
 }
 
 - (void)renderInContext:(CGContextRef)ctx pageIndex:(NSUInteger)index {
+	//标题和页数与文本绘制坐标系相反貌似
 	NSUInteger textLength = [self.txtElement length];
 	unichar *contentBuffer = (unichar *)malloc(sizeof(*contentBuffer) *textLength);
 	[self.txtElement getCharacters:contentBuffer];
-//	self.txtElement getCharacters:contentBuffer range:NSMakeRange(<#NSUInteger loc#>, <#NSUInteger len#>)
-	
+
 	CFStringRef stringRef = CFStringCreateWithCharacters(kCFAllocatorDefault, contentBuffer, textLength);
 	[self createContentString:stringRef isForRender:YES];
 	CFRelease(stringRef);
@@ -156,8 +167,7 @@
 	CFRelease(_contentStringRef);
 	_contentStringRef = NULL;
 	
-//	CGFloat scale = [UIScreen mainScreen].scale;
-	CGFloat scale = 1;
+	CGFloat scale = [UIScreen mainScreen].scale;
 	
 	CGMutablePathRef path = CGPathCreateMutable();
 	CGPathAddRect(path, NULL, _drawFrame);
@@ -165,16 +175,18 @@
 	CGPathRelease(path);
 	CFRelease(frameSetter);
 	
+	NSLog(@"%@---txt",NSStringFromCGRect(_drawFrame));
+	
 	backgroundColorFromReadingMode(self.readingMode, ctx);
 	
-	CGContextFillRect(ctx, CGRectMake(0, 0, _viewSize.width * scale, _viewSize.height * scale));
+	CGContextFillRect(ctx, CGRectMake(0, 0, _renderSize.width * scale, _renderSize.height * scale));
 	
-	CGContextTranslateCTM(ctx, 0.f, _viewSize.height * scale);
+	CGContextTranslateCTM(ctx, 0.f, _renderSize.height * scale);
 	CGContextScaleCTM(ctx, 1.f, -1.f);
 	CTFrameDraw(frame, ctx);
 	CFRelease(frame);
 	
-	textLength = [_volumeName length];
+	textLength = [self.volumeName length];
 	contentBuffer = (unichar *)malloc(sizeof(*contentBuffer) *textLength);
 	[_volumeName getCharacters:contentBuffer];
 	
@@ -188,18 +200,20 @@
 	_volumeStringRef = NULL;
 	
 	CFRange suggestedRange;
-	CGSize suggestedSize = CTFramesetterSuggestFrameSizeWithConstraints(frameSetter, CFRangeMake(0, CFStringGetLength(stringRef)), NULL, CGSizeMake(_viewSize.width * scale, _suggestedHeight * scale), &suggestedRange);
+	CGSize suggestedSize = CTFramesetterSuggestFrameSizeWithConstraints(frameSetter, CFRangeMake(0, textLength), NULL, CGSizeMake(_renderSize.width * scale, _suggestedHeight * scale), &suggestedRange);
 	
 	path = CGPathCreateMutable();
-	CGPathAddRect(path, NULL, CGRectMake((_viewSize.width * scale - suggestedSize.width) * scale, (_viewSize.height - _topEmptyHeight - _volumeContentHeight) * scale, _contentSize.width * scale, _volumeContentHeight * scale));
+	CGPathAddRect(path, NULL, CGRectMake((_renderSize.width * scale - suggestedSize.width) * 0.5f, (_renderSize.height - _volumeTopConstrains - _volumeHeightConstrains) * scale, _contentSize.width * scale, _volumeHeightConstrains * scale));
+	
+	NSLog(@"%@---volume",NSStringFromCGRect(CGRectMake((_renderSize.width * scale - suggestedSize.width) * 0.5f, (_renderSize.height - _volumeTopConstrains - _volumeHeightConstrains) * scale, _contentSize.width * scale, _volumeHeightConstrains * scale)));
 	
 	frame = CTFramesetterCreateFrame(frameSetter, CFRangeMake(0, 0), path, NULL);
 	CGPathRelease(path);
 	CFRelease(frameSetter);
-	
+
 	CTFrameDraw(frame, ctx);
 	CFRelease(frame);
-	
+
 	NSString *str = [NSString stringWithFormat:@"第%u页 ／ 共%u页", index + 1, _totalPages];
     textLength = [str length];
     contentBuffer = (unichar*)malloc(sizeof(*contentBuffer) * textLength);
@@ -212,14 +226,16 @@
     
     frameSetter = CTFramesetterCreateWithAttributedString(_volumeStringRef);
     
-    suggestedSize = CTFramesetterSuggestFrameSizeWithConstraints(frameSetter, CFRangeMake(0, textLength), NULL, CGSizeMake(_viewSize.width * scale, _suggestedHeight * scale), &suggestedRange);
+    suggestedSize = CTFramesetterSuggestFrameSizeWithConstraints(frameSetter, CFRangeMake(0, textLength), NULL, CGSizeMake(_renderSize.width * scale, _suggestedHeight * scale), &suggestedRange);
     
     CFRelease(_volumeStringRef);
     _volumeStringRef = NULL;
     
     path = CGPathCreateMutable();
-    CGPathAddRect(path, NULL, CGRectMake((_viewSize.width * scale - suggestedSize.width) * 0.5f, _initPageY * scale, _contentSize.width * scale, _volumeContentHeight * scale));
+    CGPathAddRect(path, NULL, CGRectMake((_renderSize.width * scale - suggestedSize.width) * 0.5, (_renderSize.height - _volumeTopConstrains - _contentSize.height + _pageHeightConstrains + 20) * scale, _contentSize.width * scale, _pageHeightConstrains * scale));
     
+	NSLog(@"%@",NSStringFromCGRect(CGRectMake((_renderSize.width * scale - suggestedSize.width) * 0.5, (_renderSize.height - _volumeTopConstrains - _contentSize.height + _pageHeightConstrains) * scale, _contentSize.width * scale, _pageHeightConstrains * scale)));
+	
     frame = CTFramesetterCreateFrame(frameSetter, CFRangeMake(0, 0), path, NULL);
     
     CGPathRelease(path);

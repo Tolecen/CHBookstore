@@ -7,18 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LeavesView.h"
 
-@class LeavesView;
+@interface LeavesViewController : UIViewController <LeavesViewDataSource, LeavesViewDelegate> 
+{    
+	LeavesView *leavesView;
+    CGSize viewSize;
+}
 
-// This view controller presents a LeavesView that occupies its entire view, and
-// whose data source and delegate are the view controller itself.
-//
-// Subclasses should provide content by overriding the view controller's
-// implementation of the LeavesViewDataSource protocol.
-@interface LeavesViewController : UIViewController
+// added by Lnkd.com?24 - use designated initializer to avoid continuous loop when loaded from NIB
+- (id)initWithNibName:(NSString *)nibName bundle:(NSBundle *)nibBundle;
 
-// The LeavesView presented by the view controller.
-@property (readonly) LeavesView *leavesView;
+- (id)init;
+
 
 @end
 
